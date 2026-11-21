@@ -7,29 +7,38 @@
 
 ## 安装
 
+三种方式，选一个。**装完都要重启 DSH**（服务端路由在启动时注册；之后改样式只需刷新页面）。
+
+### 方式一：从 GitHub 直接装（无需发布，现在就能用）
+
 ```bash
-dsh plugin add dsh-bigfatfish-theme
+dsh plugin add github:Blank0Nanaaa/dsh-theme
 ```
 
-指定版本：
+### 方式二：下载 zip 手动装（最稳，不依赖网络解析）
+
+1. 打开 https://github.com/Blank0Nanaaa/dsh-theme
+2. 右上角绿色 **Code** → **Download ZIP**
+3. 解压到任意目录，例如 `C:\dsh-theme`
+4. 在 DSH 里执行：
 
 ```bash
+dsh plugin add C:\dsh-theme
+```
+
+### 方式三：从 npm 装（作者发布 npm 后可用）
+
+```bash
+dsh plugin add dsh-bigfatfish-theme
+# 指定版本
 dsh plugin add dsh-bigfatfish-theme@0.2.2
 ```
 
-本地开发（不发布也能装）：
-
-```bash
-dsh plugin add ./pkg            # 或 dsh plugin add C:/path/to/pkg
-```
-
-卸载：
+### 卸载
 
 ```bash
 dsh plugin remove dsh-bigfatfish-theme
 ```
-
-安装后重启 DSH（服务端路由在启动时注册；之后改样式只需刷新页面）。
 
 ## 它是什么
 
