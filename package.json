@@ -1,0 +1,57 @@
+{
+  "name": "dsh-bigfatfish-theme",
+  "version": "0.1.0",
+  "description": "DeepSeek 深海终端 —— 三卡 HUD + 立绘状态机 + 四幕开屏的主题插件",
+  "type": "module",
+  "license": "MIT",
+  "author": "DeepSeek 深海终端",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "dsh-theme",
+    "theme",
+    "desktop",
+    "hud"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Blank0Nanaaa/dsh-theme.git"
+  },
+  "homepage": "https://github.com/Blank0Nanaaa/dsh-theme#readme",
+  "bugs": {
+    "url": "https://github.com/Blank0Nanaaa/dsh-theme/issues"
+  },
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "assets/theme.css",
+    "assets/theme.js",
+    "assets/boot.js",
+    "assets/mascot/*.png",
+    "README.md",
+    "LICENSE",
+    "assets/boot.mp3",
+    "docs/*.jpg"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-runtime"
+      ]
+    }
+  },
+  "engines": {
+    "dsh": ">=0.2.0 <0.3.0"
+  }
+}
