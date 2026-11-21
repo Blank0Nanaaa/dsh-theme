@@ -1,6 +1,6 @@
 {
   "name": "dsh-bigfatfish-theme",
-  "version": "0.1.0",
+  "version": "0.2.2",
   "description": "DeepSeek 深海终端 —— 三卡 HUD + 立绘状态机 + 四幕开屏的主题插件",
   "type": "module",
   "license": "MIT",

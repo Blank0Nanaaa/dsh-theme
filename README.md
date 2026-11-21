@@ -14,7 +14,7 @@ dsh plugin add dsh-bigfatfish-theme
 指定版本：
 
 ```bash
-dsh plugin add dsh-bigfatfish-theme@0.1.0
+dsh plugin add dsh-bigfatfish-theme@0.2.2
 ```
 
 本地开发（不发布也能装）：
