@@ -15,13 +15,13 @@
 
   var PREFIX = '/dbf';
   var BASE = (typeof window.__DBF_BASE__ === 'string' && window.__DBF_BASE__) || '';
-  var SCHEMA = 68;
+  var SCHEMA = 73;
   /* 样式：源文件是 theme.css，构建时由 tools/build.py 内联到这里 */
   var DBF_CSS = `/* 大肥鱼 · 深海终端 —— 样式源（构建时由 tools/build.py 内联进 theme.js）
  *
  * 约定：
  *   - 所有规则都挂在 html[data-dbf] 下，卸载插件即整体失效
- *   - 宿主类名（.BynINW_* / .Dc7zOa_* / .cJsG2q_* …）是当前构建的哈希名，换版本需重抓
+ *   - 宿主类名（.mP3x-q_* / .an3WzG_* / .LOmM4q_* …）是当前构建的哈希名，换版本需重抓
  *   - 主题自己的节点统一 dbf- 前缀，不占用宿主命名空间
  */
 
@@ -132,22 +132,22 @@ html[data-dbf] #root,
 html[data-dbf] body > div:not([id^='dbf-']) { background: transparent !important; }
 
 /* 宿主自己的不透明底让位（具名类 + 运行时打的属性标记，双保险） */
-html[data-dbf] .BynINW_frame,
-html[data-dbf] .BynINW_sidebarCol,
-html[data-dbf] .BynINW_centerCol,
+html[data-dbf] .mP3x-q_frame,
+html[data-dbf] .mP3x-q_sidebarCol,
+html[data-dbf] .mP3x-q_centerCol,
 html[data-dbf] [data-dbf-surface] {
   background-color: transparent !important;
   background-image: none !important;
 }
 
 /* 帧容器收窄，右侧留给画面区（DESIGN：面板 384–1336 / 画面 1360–1920，按 1920 基准折成 vw） */
-html[data-dbf] .BynINW_frame {
+html[data-dbf] .mP3x-q_frame {
   box-sizing: border-box !important;
   /* 面板右缘外扩 ~24px（69.6vw → 71vw），画面区同步让开 */
   width: 69.6vw !important;
   max-width: 69.6vw !important;
   /* 第一列 20vw -> 19.2vw：面板左缘从 357 收到 ~344，卡片与面板之间的空带 37 -> ~10 */
-  /* 必须留第三列给 BynINW_rightbarCol：文件/文档预览就渲染在这里。
+  /* 必须留第三列给 mP3x-q_rightbarCol：文件/文档预览就渲染在这里。
      只写两列的话它会被自动排版挤到第二行、高度压成 0，表现就是点开没反应。 */
   /* 第三列固定 0px：预览栏用负边距溢出到右侧，不再挤压对话面板 */
   /* 第三列 0px：预览栏用 fixed 覆盖右侧，不参与列宽计算 */
@@ -164,17 +164,17 @@ html[data-dbf] .BynINW_frame {
    用 visibility:hidden 会让宿主不再渲染 session 行，主题的会话卡就空了） */
 
 
-html[data-dbf] .BynINW_sidebarCol {
+html[data-dbf] .mP3x-q_sidebarCol {
   background: transparent !important;
   border-right: 0 !important;
   overflow: hidden !important;
 }
 
 /* 中间列自带内边距会导致面板左移，清掉 */
-html[data-dbf] .BynINW_centerCol { padding-left: 0 !important; padding-right: 0 !important; }
+html[data-dbf] .mP3x-q_centerCol { padding-left: 0 !important; padding-right: 0 !important; }
 
 /* 对话面板：玻璃卡 */
-html[data-dbf] .Dc7zOa_root {
+html[data-dbf] .an3WzG_root {
   background: var(--dbf-panel) !important;
   border: 1px solid rgba(95, 216, 255, 0.18) !important;
   border-radius: 16px !important;
@@ -185,19 +185,19 @@ html[data-dbf] .Dc7zOa_root {
   backdrop-filter: blur(18px) saturate(125%);
   -webkit-backdrop-filter: blur(18px) saturate(125%);
 }
-html[data-dbf] .Dc7zOa_header {
+html[data-dbf] .an3WzG_header {
   background: transparent !important;
   border-bottom: 1px solid rgba(95, 216, 255, 0.12) !important;
 }
-html[data-dbf] .Dc7zOa_tabs { display: none !important; }
-html[data-dbf] .Dc7zOa_crumbCur {
+html[data-dbf] .an3WzG_tabs { display: none !important; }
+html[data-dbf] .an3WzG_crumbCur {
   color: #dff3ff !important;
   font-size: 15px !important;
   font-weight: 600 !important;
 }
 
 /* 用户气泡：切角玻璃 */
-html[data-dbf] .cJsG2q_bubble {
+html[data-dbf] .LOmM4q_bubble {
   background: rgba(95, 216, 255, 0.1) !important;
   border: 1px solid rgba(95, 216, 255, 0.24) !important;
   color: #dff3ff !important;
@@ -206,11 +206,11 @@ html[data-dbf] .cJsG2q_bubble {
 }
 
 /* 助手消息：左侧鱼头像（没有用户气泡的 flowItem） */
-html[data-dbf] .xz4KEq_flowItem:not(:has(.cJsG2q_userRow)) {
+html[data-dbf] .V4vHZW_flowItem:not(:has(.LOmM4q_userRow)) {
   position: relative;
   padding-left: 36px !important;
 }
-html[data-dbf] .xz4KEq_flowItem:not(:has(.cJsG2q_userRow))::before {
+html[data-dbf] .V4vHZW_flowItem:not(:has(.LOmM4q_userRow))::before {
   content: '';
   position: absolute;
   left: 2px;
@@ -223,10 +223,10 @@ html[data-dbf] .xz4KEq_flowItem:not(:has(.cJsG2q_userRow))::before {
 }
 
 /* 正文列宽 */
-html[data-dbf] .xz4KEq_column { max-width: 620px !important; }
+html[data-dbf] .V4vHZW_column { max-width: 620px !important; }
 
 /* 工具调用行 / 思考行 */
-html[data-dbf] ._6O3mZG_callRow,
+html[data-dbf] .pDft-q_callRow,
 html[data-dbf] .pFy1Ka_root,
 html[data-dbf] .v5IAXa_root,
 html[data-dbf] ._4AI11G_root,
@@ -238,14 +238,14 @@ html[data-dbf] .WW4l1q_root {
 html[data-dbf] .v5IAXa_root { opacity: 0.82; }
 
 /* 消息里的图片 */
-html[data-dbf] .xz4KEq_column img {
+html[data-dbf] .V4vHZW_column img {
   border-radius: 10px !important;
   border: 1px solid rgba(95, 216, 255, 0.2);
   box-shadow: 0 0 22px rgba(95, 216, 255, 0.08);
 }
 
 /* 输入台：玻璃卡（宿主 composer，颜色由插槽组件补足结构） */
-html[data-dbf] .RlGAzG_card {
+html[data-dbf] .GRgSLq_card {
   background: rgba(6, 14, 28, 0.86) !important;
   border: 1px solid rgba(95, 216, 255, 0.2) !important;
   border-radius: 14px !important;
@@ -253,7 +253,7 @@ html[data-dbf] .RlGAzG_card {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }
-html[data-dbf] .RlGAzG_input { color: #cfe3ff !important; caret-color: #5fd8ff; }
+html[data-dbf] .GRgSLq_input { color: #cfe3ff !important; caret-color: #5fd8ff; }
 
 /* 滚动条 */
 html[data-dbf] ::-webkit-scrollbar { width: 8px; height: 8px; }
@@ -771,7 +771,7 @@ html[data-dbf-modal='1'] #dbf-alert { opacity: 0 !important; pointer-events: non
 
 /* ---------------------------------------------------------------- 设置页（终端参数） */
 /* 结构来自实测：panel / nav(navTitle,navList,navCell) / content(header,actions,close,options)
-   每项是 *_row（rowText: title+desc，右侧 selector / stepper / switch），外观是 v01cdW_themeCube */
+   每项是 *_row（rowText: title+desc，右侧 selector / stepper / switch），外观是 wnFoaW_themeCube */
 html[data-dbf] .wCInkW_panel {
   background: linear-gradient(180deg, rgba(8, 15, 28, 0.97), rgba(4, 8, 16, 0.99)) !important;
   border: 1px solid rgba(95, 216, 255, 0.24) !important;
@@ -813,47 +813,47 @@ html[data-dbf] .wCInkW_close {
   transition: background 140ms ease, color 140ms ease;
 }
 html[data-dbf] .wCInkW_close:hover { background: rgba(255, 95, 168, 0.14) !important; color: #ffd0e4 !important; }
-html[data-dbf] .CiK2Fa_action button {
+html[data-dbf] ._1KfHza_action button {
   border: 1px solid rgba(95, 216, 255, 0.28) !important;
   background: rgba(95, 216, 255, 0.06) !important;
   color: var(--dbf-text) !important;
   border-radius: 8px !important;
 }
-html[data-dbf] .CiK2Fa_action button:hover {
+html[data-dbf] ._1KfHza_action button:hover {
   background: rgba(95, 216, 255, 0.16) !important;
   border-color: rgba(95, 216, 255, 0.6) !important;
 }
 html[data-dbf] .wCInkW_options { scrollbar-width: thin; }
 
 /* 行分隔与文字层级 */
-html[data-dbf] .wCInkW_options ._3HsggG_row,
+html[data-dbf] .wCInkW_options .VJlF5q_row,
 html[data-dbf] .wCInkW_options .Hefa_q_row,
-html[data-dbf] .wCInkW_options ._0Fr0Ha_row,
-html[data-dbf] .wCInkW_options .XZcbxG_row,
-html[data-dbf] .wCInkW_options .PgWN5G_row,
+html[data-dbf] .wCInkW_options .VJlF5q_row,
+html[data-dbf] .wCInkW_options .VJlF5q_row,
+html[data-dbf] .wCInkW_options .VJlF5q_row,
 html[data-dbf] .wCInkW_options ._3Y3Nma_setting,
-html[data-dbf] .wCInkW_options .mP3ANa_row,
-html[data-dbf] .wCInkW_options .v01cdW_group {
+html[data-dbf] .wCInkW_options .VJlF5q_row,
+html[data-dbf] .wCInkW_options .wnFoaW_group {
   border-bottom: 1px solid rgba(95, 216, 255, 0.08) !important;
 }
-html[data-dbf] .wCInkW_options ._3HsggG_title,
+html[data-dbf] .wCInkW_options .VJlF5q_title,
 html[data-dbf] .wCInkW_options .Hefa_q_title,
-html[data-dbf] .wCInkW_options ._0Fr0Ha_title,
-html[data-dbf] .wCInkW_options .XZcbxG_title,
-html[data-dbf] .wCInkW_options .PgWN5G_title,
+html[data-dbf] .wCInkW_options .VJlF5q_title,
+html[data-dbf] .wCInkW_options .VJlF5q_title,
+html[data-dbf] .wCInkW_options .VJlF5q_title,
 html[data-dbf] .wCInkW_options ._3Y3Nma_settingTitle,
-html[data-dbf] .wCInkW_options .mP3ANa_title,
-html[data-dbf] .wCInkW_options .v01cdW_title {
+html[data-dbf] .wCInkW_options .VJlF5q_title,
+html[data-dbf] .wCInkW_options .wnFoaW_title {
   color: var(--dbf-ice) !important;
   font-family: 'Microsoft YaHei', system-ui, sans-serif;
   letter-spacing: 0.02em;
 }
-html[data-dbf] .wCInkW_options ._3HsggG_desc,
-html[data-dbf] .wCInkW_options ._0Fr0Ha_desc,
-html[data-dbf] .wCInkW_options .XZcbxG_desc,
-html[data-dbf] .wCInkW_options .PgWN5G_description,
+html[data-dbf] .wCInkW_options .VJlF5q_desc,
+html[data-dbf] .wCInkW_options .VJlF5q_desc,
+html[data-dbf] .wCInkW_options .VJlF5q_desc,
+html[data-dbf] .wCInkW_options .VJlF5q_description,
 html[data-dbf] .wCInkW_options ._3Y3Nma_settingDescription,
-html[data-dbf] .wCInkW_options .mP3ANa_desc,
+html[data-dbf] .wCInkW_options .VJlF5q_desc,
 html[data-dbf] .wCInkW_options .Hefa_q_desc {
   color: var(--dbf-dim) !important;
 }
@@ -873,30 +873,30 @@ html[data-dbf] .wCInkW_options ._root_4ub78_1:hover {
 
 /* 外观三张卡 */
 /* 不要改 cubeRow 的 gap：改用主题的间距会把三张卡挤到换行 */
-html[data-dbf] .v01cdW_themeCube {
+html[data-dbf] .wnFoaW_themeCube {
   border: 1px solid rgba(95, 216, 255, 0.16) !important;
   border-radius: 10px !important;
   background: rgba(4, 8, 16, 0.6) !important;
   transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
 }
-html[data-dbf] .v01cdW_themeCube:hover { border-color: rgba(95, 216, 255, 0.42) !important; }
-html[data-dbf] .v01cdW_themeCube.v01cdW_selected {
+html[data-dbf] .wnFoaW_themeCube:hover { border-color: rgba(95, 216, 255, 0.42) !important; }
+html[data-dbf] .wnFoaW_themeCube.wnFoaW_selected {
   border-color: rgba(95, 216, 255, 0.75) !important;
   background: rgba(95, 216, 255, 0.08) !important;
   box-shadow: 0 0 22px rgba(95, 216, 255, 0.18), inset 0 0 0 1px rgba(95, 216, 255, 0.22) !important;
 }
 
 /* 数字步进器 */
-html[data-dbf] ._0Fr0Ha_stepper {
+html[data-dbf] .VJlF5q_stepper {
   border: 1px solid rgba(95, 216, 255, 0.18) !important;
   border-radius: 8px !important;
   background: rgba(6, 12, 24, 0.9) !important;
 }
-html[data-dbf] ._0Fr0Ha_value {
+html[data-dbf] .VJlF5q_value {
   color: var(--dbf-ice) !important;
   font-family: Consolas, ui-monospace, monospace;
 }
-html[data-dbf] ._0Fr0Ha_unit { color: var(--dbf-mute) !important; }
+html[data-dbf] .VJlF5q_unit { color: var(--dbf-mute) !important; }
 
 /* 开关 */
 html[data-dbf] .wCInkW_options [role='switch'] {
@@ -1034,26 +1034,26 @@ html[data-dbf-modal='1'] #dbf-hud {
 
 
 /* ---------------------------------------------------------------- 对齐收尾：留白与行距贴近设计稿 */
-html[data-dbf] .xz4KEq_column { max-width: 618px !important; }
-html[data-dbf] .xz4KEq_column p,
-html[data-dbf] .xz4KEq_column li {
+html[data-dbf] .V4vHZW_column { max-width: 618px !important; }
+html[data-dbf] .V4vHZW_column p,
+html[data-dbf] .V4vHZW_column li {
   line-height: 1.78 !important;
 }
-html[data-dbf] .cJsG2q_bubble {
+html[data-dbf] .LOmM4q_bubble {
   padding: 12px 16px !important;
   max-width: 78% !important;
   line-height: 1.7 !important;
 }
-html[data-dbf] .xz4KEq_flowItem { margin-bottom: 10px; }
+html[data-dbf] .V4vHZW_flowItem { margin-bottom: 10px; }
 #dbf-sidebar .dbf-card { padding: 14px 16px; }
 #dbf-sidebar { gap: 16px; }
 
 
 /* 头部徽标太宽会把会话标题挤没：收紧徽标，标题保底宽度 */
-html[data-dbf] .Dc7zOa_titleCluster { flex: 1 1 auto !important; min-width: 140px !important; }
-html[data-dbf] .Dc7zOa_headerActions { flex: 0 0 auto !important; gap: 6px !important; }
-html[data-dbf] .Dc7zOa_headerActions > div { gap: 6px !important; flex-wrap: nowrap !important; }
-html[data-dbf] .Dc7zOa_headerActions > div > span {
+html[data-dbf] .an3WzG_titleCluster { flex: 1 1 auto !important; min-width: 140px !important; }
+html[data-dbf] .an3WzG_headerActions { flex: 0 0 auto !important; gap: 6px !important; }
+html[data-dbf] .an3WzG_headerActions > div { gap: 6px !important; flex-wrap: nowrap !important; }
+html[data-dbf] .an3WzG_headerActions > div > span {
   font-size: 9px !important;
   padding: 2px 7px !important;
   letter-spacing: 0.06em !important;
@@ -1115,13 +1115,13 @@ html[data-dbf] .Dc7zOa_headerActions > div > span {
 
 /* 应急开关：localStorage['dbf.plain']='1' 时退回宿主原生侧栏（保留背景与面板玻璃） */
 html[data-dbf-plain] #dbf-sidebar { display: none !important; }
-html[data-dbf-plain] .BynINW_sidebarCol > *,
-html[data-dbf-plain] .BynINW_sidebarCol > * > * {
+html[data-dbf-plain] .mP3x-q_sidebarCol > *,
+html[data-dbf-plain] .mP3x-q_sidebarCol > * > * {
   opacity: 1 !important;
   visibility: visible !important;
   pointer-events: auto !important;
 }
-html[data-dbf-plain] .BynINW_frame {
+html[data-dbf-plain] .mP3x-q_frame {
   width: auto !important;
   max-width: none !important;
   margin-right: 0 !important;
@@ -1134,8 +1134,8 @@ html[data-dbf-lite] #dbf-stage .dbf-stage-scan,
 html[data-dbf-lite] #dbf-hud .dbf-scan { display: none !important; }
 html[data-dbf-lite] .dbf-marquee-text { animation: none !important; }
 html[data-dbf-lite] #dbf-sidebar .dbf-card,
-html[data-dbf-lite] .Dc7zOa_root,
-html[data-dbf-lite] .RlGAzG_card,
+html[data-dbf-lite] .an3WzG_root,
+html[data-dbf-lite] .GRgSLq_card,
 html[data-dbf-lite] .dbf-stage-chip {
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
@@ -1148,71 +1148,71 @@ html[data-dbf-lite] .dbf-stage-chip {
    这段放在文件末尾，用于覆盖前面那几条"把侧栏藏掉"的规则。
    ================================================================ */
 /* 侧栏可见性由宿主自己决定；这里不再覆盖 pointer-events（否则会激活宿主的覆盖层） */
-html[data-dbf] .BynINW_sidebarCol {
+html[data-dbf] .mP3x-q_sidebarCol {
   background: transparent !important;
   border-right: 0 !important;
   overflow: visible !important;
 }
-html[data-dbf] ._2H3hWW_root {
+html[data-dbf] .wtg9ga_root {
   background: transparent !important;
   font-family: 'Microsoft YaHei', system-ui, sans-serif;
 }
-html[data-dbf] ._2H3hWW_logoRow { display: none !important; }
+html[data-dbf] .wtg9ga_logoRow { display: none !important; }
 
-html[data-dbf] ._2H3hWW_newSession {
+html[data-dbf] .wtg9ga_newSession {
   background: rgba(95, 216, 255, 0.08) !important;
   border: 1px solid rgba(95, 216, 255, 0.3) !important;
   border-radius: 10px !important;
   color: var(--dbf-ice) !important;
   transition: background 140ms ease, border-color 140ms ease;
 }
-html[data-dbf] ._2H3hWW_newSession:hover {
+html[data-dbf] .wtg9ga_newSession:hover {
   background: rgba(95, 216, 255, 0.16) !important;
   border-color: rgba(95, 216, 255, 0.6) !important;
 }
-html[data-dbf] ._2H3hWW_newSessionShortcut,
+html[data-dbf] .wtg9ga_newSessionShortcut,
 html[data-dbf] ._keys_38b9q_1,
 html[data-dbf] ._key_38b9q_1,
 html[data-dbf] ._separator_38b9q_30 { color: var(--dbf-mute) !important; }
 
-html[data-dbf] ._2H3hWW_panelRow { border-radius: 8px !important; color: var(--dbf-text) !important; }
-html[data-dbf] ._2H3hWW_panelRow:hover { background: rgba(95, 216, 255, 0.08) !important; }
-html[data-dbf] ._2H3hWW_panelTitle { letter-spacing: 0.02em; }
+html[data-dbf] .wtg9ga_panelRow { border-radius: 8px !important; color: var(--dbf-text) !important; }
+html[data-dbf] .wtg9ga_panelRow:hover { background: rgba(95, 216, 255, 0.08) !important; }
+html[data-dbf] .wtg9ga_panelTitle { letter-spacing: 0.02em; }
 
-html[data-dbf] ._9lTDKa_sectionLabel {
+html[data-dbf] .GAkraW_sectionLabel {
   color: var(--dbf-dim) !important;
   font-family: Consolas, ui-monospace, monospace;
   font-size: 10px !important;
   letter-spacing: 0.16em;
 }
-html[data-dbf] ._9lTDKa_iconButton,
-html[data-dbf] ._9lTDKa_searchButton {
+html[data-dbf] .GAkraW_iconButton,
+html[data-dbf] .GAkraW_searchButton {
   color: var(--dbf-dim) !important;
   border-radius: 7px !important;
 }
-html[data-dbf] ._9lTDKa_iconButton:hover,
-html[data-dbf] ._9lTDKa_searchButton:hover {
+html[data-dbf] .GAkraW_iconButton:hover,
+html[data-dbf] .GAkraW_searchButton:hover {
   background: rgba(95, 216, 255, 0.1) !important;
   color: var(--dbf-ice) !important;
 }
-html[data-dbf] ._9lTDKa_searchInput {
+html[data-dbf] .GAkraW_searchInput {
   background: rgba(6, 12, 24, 0.85) !important;
   border: 1px solid rgba(95, 216, 255, 0.2) !important;
   border-radius: 7px !important;
   color: var(--dbf-text) !important;
 }
 
-html[data-dbf] .hIlkoa_projectRow { border-radius: 8px !important; }
-html[data-dbf] .hIlkoa_projectRow:hover { background: rgba(95, 216, 255, 0.07) !important; }
-html[data-dbf] .hIlkoa_projectText .hIlkoa_title {
+html[data-dbf] .wnFoaW_projectRow { border-radius: 8px !important; }
+html[data-dbf] .wnFoaW_projectRow:hover { background: rgba(95, 216, 255, 0.07) !important; }
+html[data-dbf] .wnFoaW_projectText .wnFoaW_title {
   color: var(--dbf-text) !important;
   font-size: 12.5px !important;
 }
 
-html[data-dbf] .hIlkoa_sessionRow { position: relative; border-radius: 8px !important; }
-html[data-dbf] .hIlkoa_sessionRow:hover { background: rgba(95, 216, 255, 0.07) !important; }
-html[data-dbf] .hIlkoa_sessionRow.hIlkoa_selected { background: rgba(95, 216, 255, 0.12) !important; }
-html[data-dbf] .hIlkoa_sessionRow.hIlkoa_selected::before {
+html[data-dbf] .wnFoaW_sessionRow { position: relative; border-radius: 8px !important; }
+html[data-dbf] .wnFoaW_sessionRow:hover { background: rgba(95, 216, 255, 0.07) !important; }
+html[data-dbf] .wnFoaW_sessionRow.wnFoaW_selected { background: rgba(95, 216, 255, 0.12) !important; }
+html[data-dbf] .wnFoaW_sessionRow.wnFoaW_selected::before {
   content: '';
   position: absolute;
   left: 0;
@@ -1223,33 +1223,33 @@ html[data-dbf] .hIlkoa_sessionRow.hIlkoa_selected::before {
   background: var(--dbf-cyan);
   box-shadow: 0 0 10px rgba(95, 216, 255, 0.9);
 }
-html[data-dbf] .hIlkoa_sessionRow .hIlkoa_title {
+html[data-dbf] .wnFoaW_sessionRow .wnFoaW_title {
   color: var(--dbf-text) !important;
   font-size: 12.5px !important;
 }
-html[data-dbf] .hIlkoa_time {
+html[data-dbf] .wnFoaW_time {
   color: var(--dbf-mute) !important;
   font-family: Consolas, ui-monospace, monospace;
   font-size: 9px !important;
   letter-spacing: 0.06em;
 }
 
-html[data-dbf] ._9lTDKa_sessionOverflowButton {
+html[data-dbf] .GAkraW_sessionOverflowButton {
   color: var(--dbf-dim) !important;
   border-radius: 8px !important;
   font-size: 11px !important;
 }
-html[data-dbf] ._9lTDKa_sessionOverflowButton:hover {
+html[data-dbf] .GAkraW_sessionOverflowButton:hover {
   background: rgba(95, 216, 255, 0.08) !important;
   color: var(--dbf-ice) !important;
 }
-html[data-dbf] ._9lTDKa_fade {
+html[data-dbf] .GAkraW_fade {
   background: linear-gradient(to top, #04060c, rgba(4, 6, 12, 0)) !important;
 }
 html[data-dbf] .wCInkW_triggerRow { border-radius: 8px !important; }
 html[data-dbf] .wCInkW_triggerRow:hover { background: rgba(95, 216, 255, 0.08) !important; }
 
-html[data-dbf] ._9lTDKa_listArea { padding-bottom: 300px !important; }
+html[data-dbf] .GAkraW_listArea { padding-bottom: 300px !important; }
 
 #dbf-sidebar {
   top: auto !important;
@@ -1263,7 +1263,7 @@ html[data-dbf] ._9lTDKa_listArea { padding-bottom: 300px !important; }
    宿主侧栏做成第一张卡（保留工作区分组 / 搜索 / 筛选 / 新建文件夹 / 插件 /
    待审批 / 展开其余 / 真实时间），大肥鱼卡与遥测卡叠在列底部。
    ================================================================ */
-html[data-dbf] .BynINW_sidebarCol {
+html[data-dbf] .mP3x-q_sidebarCol {
   /* 必须留在 grid 流里：一旦 position:fixed 脱离文档流，
      中间的对话面板会被自动排版挤进第一列（341px），整个聊天区就没了 */
   position: relative !important;
@@ -1287,7 +1287,7 @@ html[data-dbf] .BynINW_sidebarCol {
   padding: 26px 0 0 0 !important;
   overflow: hidden !important;
 }
-html[data-dbf] .BynINW_sidebarCol::before {
+html[data-dbf] .mP3x-q_sidebarCol::before {
   content: 'SESSIONS';
   position: absolute;
   top: 9px;
@@ -1297,14 +1297,14 @@ html[data-dbf] .BynINW_sidebarCol::before {
   letter-spacing: 0.16em;
   color: var(--dbf-dim);
 }
-html[data-dbf] .BynINW_sidebarCol > * { height: 100% !important; }
-html[data-dbf] ._2H3hWW_root { width: 100% !important; height: 100% !important; }
-html[data-dbf] ._2H3hWW_regionArea { height: calc(100% - 96px) !important; }
-html[data-dbf] ._9lTDKa_root,
-html[data-dbf] ._9lTDKa_listArea,
-html[data-dbf] ._9lTDKa_treeBody,
-html[data-dbf] ._9lTDKa_list { height: 100% !important; }
-html[data-dbf] ._9lTDKa_listArea { padding-bottom: 6px !important; }
+html[data-dbf] .mP3x-q_sidebarCol > * { height: 100% !important; }
+html[data-dbf] .wtg9ga_root { width: 100% !important; height: 100% !important; }
+html[data-dbf] .wtg9ga_regionArea { height: calc(100% - 96px) !important; }
+html[data-dbf] .GAkraW_root,
+html[data-dbf] .GAkraW_listArea,
+html[data-dbf] .GAkraW_treeBody,
+html[data-dbf] .GAkraW_list { height: 100% !important; }
+html[data-dbf] .GAkraW_listArea { padding-bottom: 6px !important; }
 
 #dbf-sidebar {
   left: 16px !important;
@@ -1336,7 +1336,7 @@ html[data-dbf] ._9lTDKa_listArea { padding-bottom: 6px !important; }
    卡一高度按 54 + (100+14+175) + 20 + 14 = 377 反推 */
 #dbf-sidebar { gap: 14px !important; }
 #dbf-sidebar .dbf-card { box-sizing: border-box !important; }
-html[data-dbf] .BynINW_sidebarCol { height: calc(100vh - 397px) !important; }
+html[data-dbf] .mP3x-q_sidebarCol { height: calc(100vh - 397px) !important; }
 
 /* ================ 开屏：四幕 ================ */
 #dbf-boot {
@@ -1655,7 +1655,7 @@ html[data-dbf] #dbf-stage::after {
 /* ================ 右侧栏（预览）修复 ================ */
 /* 预览栏交还 DSH 原生管理，这里只保证它能收缩、不被主题装饰盖住。
    不做 position / 宽度 / 显隐切换 —— 每一次切换都会引起重排闪烁。 */
-html[data-dbf] .BynINW_rightbarCol {
+html[data-dbf] .mP3x-q_rightbarCol {
   min-width: 0 !important;
   align-self: stretch !important;
   z-index: 30 !important;
@@ -1692,31 +1692,31 @@ html[data-dbf] #dbf-sidebar .dbf-fish::after {
 /* ================ 小窗口适配 ================ */
 /* 窗口变矮时，卡一高度公式会把列表压得没有空间；这里按高度分档收紧，
    并把卡片改成可按内容压缩，避免出现"列表一片空白"。 */
-html[data-dbf] .BynINW_sidebarCol {
+html[data-dbf] .mP3x-q_sidebarCol {
   min-height: 240px !important;
 }
 @media (max-height: 940px) {
-  html[data-dbf] .BynINW_sidebarCol { height: calc(100vh - 330px) !important; }
+  html[data-dbf] .mP3x-q_sidebarCol { height: calc(100vh - 330px) !important; }
   /* 卡二与头像不随窗口缩小，保持版式稳定 */
   #dbf-sidebar .dbf-card-tel { height: 152px !important; }
 
 }
 @media (max-height: 800px) {
-  html[data-dbf] .BynINW_sidebarCol { height: calc(100vh - 250px) !important; }
+  html[data-dbf] .mP3x-q_sidebarCol { height: calc(100vh - 250px) !important; }
 
   #dbf-sidebar .dbf-card-tel { height: 140px !important; }
 
   #dbf-sidebar .dbf-mcp { display: none !important; }
 }
 @media (max-height: 680px) {
-  html[data-dbf] .BynINW_sidebarCol { height: calc(100vh - 150px) !important; }
+  html[data-dbf] .mP3x-q_sidebarCol { height: calc(100vh - 150px) !important; }
   #dbf-sidebar .dbf-card-tel { display: none !important; }
 }
 
 /* ================ 宽度自适应（窗口变窄时列表被压成 0 宽） ================ */
 /* 卡一用 18.1vw + min-width:274px，窗口一窄就比 grid 轨道还宽，宿主列表被裁成 0 宽只剩标题。
    改成"跟着轨道走"：宽度 100%，不设 min-width。 */
-html[data-dbf] .BynINW_sidebarCol {
+html[data-dbf] .mP3x-q_sidebarCol {
   /* 100% 会吃掉 margin-right，导致空隙不生效；这里减掉 20px 把空隙真正让出来 */
   width: calc(100% - 20px) !important;
   min-width: 0 !important;
@@ -1730,7 +1730,7 @@ html[data-dbf] .BynINW_sidebarCol {
   max-width: none !important;
 }
 /* 轨道下限，保证列表永远有可用宽度 */
-html[data-dbf] .BynINW_frame {
+html[data-dbf] .mP3x-q_frame {
   /* 左列固定 280px = 宿主自己的 --dsh-windows-sidebar-width。
      收窄到 228px 会触发 DSH 的"图标轨道"模式，它会把 regionArea 设成 display:none，
      结果就是会话列表整块消失、只剩标题。 */
@@ -1740,7 +1740,7 @@ html[data-dbf] .BynINW_frame {
 /* ================ 强制显示会话区（宿主在小窗口把它 display:none） ================ */
 /* 窗口变矮/变窄时 DSH 会把 regionArea 设成 display:none（收成图标轨道），
    会话列表整块消失、卡片只剩标题。这里强制它回到流里。 */
-html[data-dbf] ._2H3hWW_regionArea {
+html[data-dbf] .wtg9ga_regionArea {
   display: flex !important;
   flex: 1 1 auto !important;
   min-height: 0 !important;
@@ -1748,8 +1748,8 @@ html[data-dbf] ._2H3hWW_regionArea {
   opacity: 1 !important;
   visibility: visible !important;
 }
-html[data-dbf] ._9lTDKa_root,
-html[data-dbf] ._9lTDKa_listArea {
+html[data-dbf] .GAkraW_root,
+html[data-dbf] .GAkraW_listArea {
   display: flex !important;
   min-height: 0 !important;
 }
@@ -1975,7 +1975,7 @@ html[data-dbf] #dbf-sidebar .dbf-fish {
 
   /* ---------------------------------------------------------------- 样式 */
   /* 立绘样式（data URI）：追加在 DBF_CSS 之后，避免 theme.css 里出现巨型 base64 */
-  var MASCOT_CSS = "/* 消息里的 AI 头像：换成坐姿立绘 */\nhtml[data-dbf] .xz4KEq_flowItem:not(:has(.cJsG2q_userRow))::before{width:22px!important;height:22px!important;top:2px!important;background:url(/dbf/img/avatar.png) center/contain no-repeat!important;border-radius:50%!important;filter:drop-shadow(0 0 8px rgba(95,216,255,.5))!important;}\n\n:root{--dbf-img-idle:url(/dbf/img/idle.png);}\n/* ================= 大肥鱼立绘（整图内联 + cover 定位） ================= */\n#dbf-sidebar .dbf-card-state{display:grid!important;grid-template-columns:88px 1fr!important;grid-template-rows:auto auto auto auto!important;column-gap:10px!important;align-content:center!important;}\n#dbf-sidebar .dbf-mascot-top{display:contents!important;}\n#dbf-sidebar .dbf-fish{grid-column:1!important;grid-row:1 / span 4!important;align-self:center!important;width:88px!important;height:88px!important;border-radius:10px!important;box-shadow:none!important;background-size:cover!important;background-repeat:no-repeat!important;overflow:hidden!important;}\n#dbf-sidebar .dbf-fish::before,#dbf-sidebar .dbf-fish::after{display:none!important;content:none!important;}\n#dbf-sidebar .dbf-mascot-head{grid-column:2!important;grid-row:1!important;}\n#dbf-sidebar .dbf-state{grid-column:2!important;grid-row:2!important;margin:2px 0 0!important;}\n#dbf-sidebar .dbf-row{grid-column:2!important;grid-row:3!important;margin:4px 0 0!important;}\n#dbf-sidebar .dbf-bar{grid-column:2!important;grid-row:4!important;margin-top:3px!important;}\n#dbf-sidebar .dbf-fish{background-image:url(/dbf/img/idle.png)!important;background-position:52% 16%!important;}\nhtml[data-dbf-state='idle'] #dbf-sidebar .dbf-fish{background-image:url(/dbf/img/idle.png)!important;background-position:52% 16%!important;}\nhtml[data-dbf-state='think'] #dbf-sidebar .dbf-fish{background-image:url(/dbf/img/state-think.png)!important;background-position:68% 22%!important;}\nhtml[data-dbf-state='approval'] #dbf-sidebar .dbf-fish{background-image:url(/dbf/img/state-approval.png)!important;background-position:50% 34%!important;}\nhtml[data-dbf-state='error'] #dbf-sidebar .dbf-fish{background-image:url(/dbf/img/state-approval.png)!important;background-position:50% 34%!important;filter:drop-shadow(0 0 9px rgba(255,95,168,.85)) saturate(.8)!important;}\n/* 题栏的小鱼标记：换成爱心眼立绘 */\n#dbf-titlebar .dbf-mark{width:26px!important;height:26px!important;border-radius:50%!important;background:url(/dbf/img/mark.png) 50% 34%/cover no-repeat!important;filter:drop-shadow(0 0 9px rgba(95,216,255,.55))!important;}";
+  var MASCOT_CSS = "/* 消息里的 AI 头像：换成坐姿立绘 */\nhtml[data-dbf] .V4vHZW_flowItem:not(:has(.LOmM4q_userRow))::before{width:22px!important;height:22px!important;top:2px!important;background:url(/dbf/img/avatar.png) center/contain no-repeat!important;border-radius:50%!important;filter:drop-shadow(0 0 8px rgba(95,216,255,.5))!important;}\n\n:root{--dbf-img-idle:url(/dbf/img/idle.png);}\n/* ================= 大肥鱼立绘（整图内联 + cover 定位） ================= */\n#dbf-sidebar .dbf-card-state{display:grid!important;grid-template-columns:88px 1fr!important;grid-template-rows:auto auto auto auto!important;column-gap:10px!important;align-content:center!important;}\n#dbf-sidebar .dbf-mascot-top{display:contents!important;}\n#dbf-sidebar .dbf-fish{grid-column:1!important;grid-row:1 / span 4!important;align-self:center!important;width:88px!important;height:88px!important;border-radius:10px!important;box-shadow:none!important;background-size:cover!important;background-repeat:no-repeat!important;overflow:hidden!important;}\n#dbf-sidebar .dbf-fish::before,#dbf-sidebar .dbf-fish::after{display:none!important;content:none!important;}\n#dbf-sidebar .dbf-mascot-head{grid-column:2!important;grid-row:1!important;}\n#dbf-sidebar .dbf-state{grid-column:2!important;grid-row:2!important;margin:2px 0 0!important;}\n#dbf-sidebar .dbf-row{grid-column:2!important;grid-row:3!important;margin:4px 0 0!important;}\n#dbf-sidebar .dbf-bar{grid-column:2!important;grid-row:4!important;margin-top:3px!important;}\n#dbf-sidebar .dbf-fish{background-image:url(/dbf/img/idle.png)!important;background-position:52% 16%!important;}\nhtml[data-dbf-state='idle'] #dbf-sidebar .dbf-fish{background-image:url(/dbf/img/idle.png)!important;background-position:52% 16%!important;}\nhtml[data-dbf-state='think'] #dbf-sidebar .dbf-fish{background-image:url(/dbf/img/state-think.png)!important;background-position:68% 22%!important;}\nhtml[data-dbf-state='approval'] #dbf-sidebar .dbf-fish{background-image:url(/dbf/img/state-approval.png)!important;background-position:50% 34%!important;}\nhtml[data-dbf-state='error'] #dbf-sidebar .dbf-fish{background-image:url(/dbf/img/state-approval.png)!important;background-position:50% 34%!important;filter:drop-shadow(0 0 9px rgba(255,95,168,.85)) saturate(.8)!important;}\n/* 题栏的小鱼标记：换成爱心眼立绘 */\n#dbf-titlebar .dbf-mark{width:26px!important;height:26px!important;border-radius:50%!important;background:url(/dbf/img/mark.png) 50% 34%/cover no-repeat!important;filter:drop-shadow(0 0 9px rgba(95,216,255,.55))!important;}";
 
   function applyCss() {
     try {
@@ -2200,7 +2200,7 @@ html[data-dbf] #dbf-sidebar .dbf-fish {
   function ensureSessionsVisible() {
     try {
       if (window.__DBF_EXPAND_TRIES__ === undefined) window.__DBF_EXPAND_TRIES__ = 0;
-      var list = document.querySelector('._9lTDKa_listArea');
+      var list = document.querySelector('.GAkraW_listArea');
       if (!list) return;
       if (list.childElementCount > 0) {
         window.__DBF_EXPAND_TRIES__ = 0;
@@ -2208,9 +2208,9 @@ html[data-dbf] #dbf-sidebar .dbf-fish {
       }
       if (window.__DBF_EXPAND_TRIES__ >= 4) return;
       var toggle =
-        document.querySelector('.BynINW_sidebarCol ._2H3hWW_toggle') ||
-        document.querySelector('._2H3hWW_iconButton._2H3hWW_toggle') ||
-        document.querySelector('._2H3hWW_toggle');
+        document.querySelector('.mP3x-q_sidebarCol .wtg9ga_toggle') ||
+        document.querySelector('.wtg9ga_iconButton.wtg9ga_toggle') ||
+        document.querySelector('.wtg9ga_toggle');
       if (!toggle) return;
       window.__DBF_EXPAND_TRIES__ += 1;
       toggle.click();
@@ -2511,7 +2511,7 @@ html[data-dbf] #dbf-sidebar .dbf-fish {
 
   /** 宿主侧栏被主题接管后，"新建会话"入口转发给宿主自己的按钮。 */
   function hostNewSessionButton() {
-    var scope = document.querySelector('.BynINW_sidebarCol') || document;
+    var scope = document.querySelector('.mP3x-q_sidebarCol') || document;
     var candidates = scope.querySelectorAll('[class*="newSession"]');
     for (var i = 0; i < candidates.length; i += 1) {
       if (candidates[i].tagName === 'BUTTON' || candidates[i].getAttribute('role') === 'button') {
@@ -2523,7 +2523,7 @@ html[data-dbf] #dbf-sidebar .dbf-fish {
 
   /** 宿主侧栏底部的「账号菜单」按钮：被主题藏起来了，但还能程序化点开。 */
   function hostAccountButton() {
-    var scope = document.querySelector('.BynINW_sidebarCol') || document;
+    var scope = document.querySelector('.mP3x-q_sidebarCol') || document;
     var buttons = scope.querySelectorAll('button');
     var i;
     for (i = 0; i < buttons.length; i += 1) {
@@ -2546,7 +2546,7 @@ html[data-dbf] #dbf-sidebar .dbf-fish {
   }
 
   function sessionRowCount() {
-    return document.querySelectorAll('.hIlkoa_sessionRow').length;
+    return document.querySelectorAll('.wnFoaW_sessionRow').length;
   }
 
   function startNewSession() {
@@ -2570,7 +2570,7 @@ html[data-dbf] #dbf-sidebar .dbf-fish {
   function syncSessions() {
     var list = document.querySelector('[data-dbf-sessions]');
     if (!list) return;
-    var rows = document.querySelectorAll('.hIlkoa_sessionRow');
+    var rows = document.querySelectorAll('.wnFoaW_sessionRow');
     if (!rows.length) return;
 
     var countNode = document.querySelector('[data-dbf-count]');
@@ -2579,7 +2579,7 @@ html[data-dbf] #dbf-sidebar .dbf-fish {
     if (list.children.length === rows.length) {
       for (var i = 0; i < rows.length; i += 1) {
         var item = list.children[i];
-        item.classList.toggle('is-active', rows[i].classList.contains('hIlkoa_selected'));
+        item.classList.toggle('is-active', rows[i].classList.contains('wnFoaW_selected'));
         var label = item.querySelector('.dbf-session-title');
         var text = (rows[i].textContent || '').trim().split('\n')[0].slice(0, 22);
         if (label && label.textContent !== text) label.textContent = text;
@@ -2590,7 +2590,7 @@ html[data-dbf] #dbf-sidebar .dbf-fish {
     list.textContent = '';
     rows.forEach(function (row, index) {
       var item = el('div', 'dbf-session-row', list);
-      if (row.classList.contains('hIlkoa_selected')) item.classList.add('is-active');
+      if (row.classList.contains('wnFoaW_selected')) item.classList.add('is-active');
       var no = el('span', 'dbf-session-no', item);
       no.textContent = ('0' + (index + 1)).slice(-2);
       var body = el('div', 'dbf-session-body', item);
@@ -2599,7 +2599,7 @@ html[data-dbf] #dbf-sidebar .dbf-fish {
       var meta = el('div', 'dbf-session-meta', body);
       meta.textContent = index === 0 ? 'now' : index + 'h';
       item.addEventListener('click', function () {
-        var live = document.querySelectorAll('.hIlkoa_sessionRow')[index];
+        var live = document.querySelectorAll('.wnFoaW_sessionRow')[index];
         if (live) live.click();
       });
     });
@@ -2669,7 +2669,7 @@ html[data-dbf] #dbf-sidebar .dbf-fish {
   }
 
   function syncPanelDeco() {
-    var panel = document.querySelector('.Dc7zOa_root');
+    var panel = document.querySelector('.an3WzG_root');
     var wrap = document.getElementById('dbf-panel-deco');
     if (!panel || !wrap) return;
     var rect = panel.getBoundingClientRect();
@@ -2890,8 +2890,38 @@ html[data-dbf] #dbf-sidebar .dbf-fish {
     window.setInterval(tick, 3000);
   }
 
+  /* 新版宿主不一定保留 data-composer-stats，按文本特征兜底查找 */
+  function findStatsHost() {
+    /* 新版宿主用 data-composer-stat 标注统计项（usage / context / rate …） */
+    var stat = document.querySelector('[data-composer-stat]');
+    if (stat) {
+      var node = stat;
+      for (var i = 0; i < 4 && node.parentElement; i += 1) node = node.parentElement;
+      return node;
+    }
+    var byAttr = document.querySelector('[data-composer-stats]');
+    if (byAttr) return byAttr;
+    var seat = document.querySelector('[class*="_composerSeat"]');
+    var scope = seat || document.body;
+    var bottomLine = window.innerHeight - 240;
+    var nodes = scope.querySelectorAll('div,span,section');
+    for (var j = nodes.length - 1; j >= 0; j -= 1) {
+      var el2 = nodes[j];
+      if (el2.closest && (el2.closest('pre,code') || el2.closest('#dbf-sidebar'))) continue;
+      if (el2.id && el2.id.indexOf('dbf-') === 0) continue;
+      if (!seat) {
+        var r = el2.getBoundingClientRect();
+        if (r.top < bottomLine) continue;
+      }
+      var text = el2.textContent || '';
+      if (text.length < 4 || text.length > 300) continue;
+      if (/tok\/s|ctx\s*\d+\s*%/i.test(text)) return el2;
+    }
+    return null;
+  }
+
   function watchContext() {
-    var host = document.querySelector('[data-composer-stats]');
+    var host = findStatsHost();
     if (!host) {
       window.setTimeout(watchContext, 1500);
       return;
@@ -2902,20 +2932,32 @@ html[data-dbf] #dbf-sidebar .dbf-fish {
       return node;
     };
     var read = function () {
-      var text = host.textContent || '';
-      var match = /(\d{1,3})\s*%/.exec(text);
-      if (match) {
-        var percent = Math.max(0, Math.min(100, Number(match[1])));
+      var wideText = widen().textContent || '';
+      var text = (host.textContent || '') + ' ' + wideText;
+
+      /* 上下文占用：优先 "ctx 62%"，其次行内最后一个百分比 */
+      var ctxMatch = /ctx\s*(\d{1,3})\s*%/i.exec(text);
+      if (!ctxMatch) {
+        var all = [];
+        var re = /(\d{1,3})\s*%/g;
+        var mm;
+        while ((mm = re.exec(text))) all.push(mm[1]);
+        if (all.length) ctxMatch = [mm, all[all.length - 1]];
+      }
+      if (ctxMatch) {
+        var percent = Math.max(0, Math.min(100, Number(ctxMatch[1])));
         setMetric('ctx', percent / 100, percent + '%');
         var value = document.querySelector('[data-dbf-ctx]');
         if (value) value.textContent = percent + '%';
         var fill = document.querySelector('[data-dbf-ctx-fill]');
         if (fill) fill.style.width = percent + '%';
       }
-      var wideText = widen().textContent || '';
-      var rate = /(\d+(?:\.\d+)?)\s*(?:tok\/s|tokens?\/s)/i.exec(wideText);
+
+      var rate = /(\d+(?:\.\d+)?)\s*(?:tok\/s|tokens?\/s)/i.exec(text);
       if (rate) setMetric('tok', Math.min(1, Number(rate[1]) / 400), rate[1]);
-      var cache = /(?:缓存命中|cache(?:\s*hit)?)\D{0,4}(\d+(?:\.\d+)?)\s*%/i.exec(wideText);
+
+      var cache = /缓存命中\D{0,6}(\d+(?:\.\d+)?)\s*%/.exec(text) ||
+                  /cache(?:\s*hit)?\D{0,6}(\d+(?:\.\d+)?)\s*%/i.exec(text);
       if (cache) setMetric('cache', Number(cache[1]) / 100, cache[1] + '%');
     };
     read();
@@ -2924,6 +2966,10 @@ html[data-dbf] #dbf-sidebar .dbf-fish {
     } catch (error) {
       warn('ctx', error);
     }
+    /* 节点可能被宿主重建，定期确认还在不在 */
+    window.setInterval(function () {
+      if (!document.body.contains(host)) watchContext();
+    }, 4000);
   }
 
   /* ---------------------------------------------------------------- 启动 */
